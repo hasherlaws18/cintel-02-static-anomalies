@@ -20,7 +20,7 @@ Complete:
 
 ## Topic
 
-Static anomaly detection using simple domain thresholds.
+**Static anomaly detection** using simple domain thresholds.
 
 In this project, you will detect anomalies in static tabular data by defining and applying reasonable maximum thresholds.
 
@@ -58,23 +58,49 @@ Each row represents one observation and includes:
 - `age_years` - age in years
 - `height_inches` - height in inches
 
-The example data represents a pediatric clinic.
+The example data represents a **pediatric clinic**.
 
-## Your Task
+Your version of the dataset is already provided.
+It represents an **adult clinic**.
+
+- `data/static_data_yourname.csv`
+
+## Your Phase 4: Technical Modification Task
+
+Since this is the first time, we'll help you plan the technical modification task.
 
 Using the example as a guide:
 
 1. Copy `src/cintel/anomaly_detector_case.py`.
-2. Rename the copy to `src/cintel/yourname_anomaly_detector.py` (all lowercase, no spaces).
-3. Copy `data/clinic_data_case.csv`.
-4. Rename the copy to `data/clinic_data_yourname.csv`.
-5. Modify the dataset to represent a **different population or scenario** (for example: adult clinic patients, dogs at a veterinary clinic, or tortoises at a wildlife center).
-6. Define reasonable maximum thresholds for:
+2. Rename the copy to `src/cintel/anomaly_detector_yourname.py` (all lowercase, no spaces).
+3. Update your Python file so it reads from `data/static_data_yourname.csv`.
+4. Define reasonable maximum thresholds for:
    - age (in years)
    - height (in inches)
-7. Detect anomalies using your thresholds.
-8. Output anomalies to your custom artifacts file.
-9. Ensure your script logs meaningful output.
+5. Detect anomalies using your thresholds.
+6. Output anomalies to your custom artifacts file.
+7. Ensure your script logs meaningful output.
+
+Use your new Python file with the provided `_case` dataset first.
+
+This phase is mainly about confirming that:
+
+- your copied file runs
+- your renamed module runs correctly
+- you understand how the file name, module name, and run command connect
+
+### Phase 5: Apply the Skills
+
+Use your Python file with `data/static_data_yourname.csv`.
+
+This dataset represents an adult clinic, so your **thresholds should be different** from the pediatric example.
+
+Then update your code and documentation in `docs/` to explain:
+
+- what population your file represents
+- what thresholds you chose
+- why those thresholds are reasonable
+- what anomalies you found
 
 Your logic should remain simple.
 You do not need to introduce advanced statistical methods in this module.
@@ -83,6 +109,7 @@ You do not need to introduce advanced statistical methods in this module.
 
 - Which rows clearly violate your thresholds?
 - Are there borderline cases?
+- How do adult thresholds differ from pediatric thresholds?
 - Would your thresholds change with more domain knowledge?
 - How might this process change if the data were updated continuously?
 
