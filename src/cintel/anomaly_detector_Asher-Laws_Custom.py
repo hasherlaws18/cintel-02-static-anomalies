@@ -26,7 +26,7 @@ Paths (relative to repo root)
 
 Terminal command to run this file from the root project folder
 
-    uv run python -m cintel.anomaly_detector_Asher-Laws
+    uv run python -m cintel.anomaly_detector_Asher-Laws_Custom
 
 OBS:
   Don't edit this file - it should remain a working example.
@@ -56,8 +56,8 @@ ARTIFACTS_DIR: Final[Path] = ROOT_DIR / "artifacts"
 
 # === DECLARE GLOBAL CONSTANTS FOR FILE PATHS ===
 
-DATA_FILE: Final[Path] = DATA_DIR / "clinic_data_case.csv"
-OUTPUT_FILE: Final[Path] = ARTIFACTS_DIR / "anomalies_case_Asher-Laws.csv"
+DATA_FILE: Final[Path] = DATA_DIR / "clinic_data_Asher-Laws.csv"
+OUTPUT_FILE: Final[Path] = ARTIFACTS_DIR / "anomalies_Asher-Laws_custom.csv"
 
 
 # === DEFINE THE MAIN FUNCTION ===
@@ -114,13 +114,15 @@ def main() -> None:
     LOG.info("Studying children's ages and heights to find anomalies...")
 
     # x is age in years, so 16 is the upper limit for kids
-    MAX_REASONABLE_X_VALUE: Final[float] = 17.0
+    # change the min limit to 21 to see only adults and not childern.
+    MIN_REASONABLE_X_VALUE: Final[float] = 40.0
 
     # y is height in inches, so maybe 6 feet (72 inches) is a reasonable upper limit
-    MAX_REASONABLE_Y_VALUE: Final[float] = 72.0
+    #  Decrease the height to 67.
+    MIN_REASONABLE_Y_VALUE: Final[float] = 67.00
 
-    LOG.info(f"MAX_REASONABLE_X_VALUE: {MAX_REASONABLE_X_VALUE} in years")
-    LOG.info(f"MAX_REASONABLE_Y_VALUE: {MAX_REASONABLE_Y_VALUE} in inches")
+    LOG.info(f"MIN_REASONABLE_X_VALUE: {MIN_REASONABLE_X_VALUE} in years")
+    LOG.info(f"MIN_REASONABLE_Y_VALUE: {MIN_REASONABLE_Y_VALUE} in inches")
 
     # Create a new DataFrame named anomalies_df that contains
     # only the rows where EITHER
@@ -129,8 +131,8 @@ def main() -> None:
     # A single pipe (|) is the OR operator in polars.
     # We will use greater than or equal to (>=) to find values at or above the threshold.
     anomalies_df: pl.DataFrame = df.filter(
-        (pl.col("age_years") >= MAX_REASONABLE_X_VALUE)
-        | (pl.col("height_inches") >= MAX_REASONABLE_Y_VALUE)
+        (pl.col("age_years") >= MIN_REASONABLE_X_VALUE)
+        | (pl.col("height_inches") >= MIN_REASONABLE_Y_VALUE)
     )
 
     LOG.info(f"Count of anomalies found: {anomalies_df.height}")
