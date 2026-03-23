@@ -67,6 +67,11 @@ Sometimes instructions may not quite match your operating system.
 When issues occur, share screenshots, error messages, and details about what you tried.
 Working through issues is part of implementing professional projects.
 
+
+## Changes
+
+Made a change in anomaly_detector is that the age is 17 instead of 16 for upper limits for kids. # x is age in years, so 16 is the upper limit for kids
+    MAX_REASONABLE_X_VALUE: Final[float] = 17.0
 ## Success
 
 After completing Phase 1. **Start & Run**, you'll have your own GitHub project,
